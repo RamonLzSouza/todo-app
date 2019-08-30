@@ -6,10 +6,13 @@ const bodyParser = require('body-parser')
 const express = require('express')
 //cria um servidor HTTP express
 const server = express()
+//cria instancia do arquivo 
+const allowCors = require('./cors')
 //configura o servidor para obter dados do formulario do usuario
 server.use(bodyParser.urlencoded({ extended: true }))
 //configura o servidor para dados chegarem no formato JSON
 server.use(bodyParser.json())
+server.use(allowCors)
 //sobe o servidor
 server.listen(port, function () {
     console.log(`BACKEND is running on port ${port}.`)
